@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Mummy ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#000000,#0f0f1f,#2a003f);
+color:white;
+overflow:hidden;
+}
+
+/* SLIDES */
+.slide{
+position:absolute;
+width:100%;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+opacity:0;
+transform:scale(0.85);
+transition:1.3s ease;
+padding:20px;
+}
+
+.slide.active{
+opacity:1;
+transform:scale(1);
+}
+
+h1{
+font-family:'Pacifico',cursive;
+font-size:34px;
+color:#ff6bb5;
+text-shadow:0 0 15px #ff6bb5;
+margin-bottom:15px;
+animation:fadeUp 1.5s ease forwards;
+}
+
+p{
+font-size:16px;
+max-width:320px;
+line-height:1.6;
+color:#eee;
+animation:fadeUp 2s ease forwards;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+/* PHOTO */
+.slide img{
+width:230px;
+border-radius:20px;
+margin-top:20px;
+box-shadow:0 0 30px rgba(255,107,181,0.7);
+animation:zoomIn 2s ease;
+}
+
+@keyframes zoomIn{
+from{transform:scale(0.6);opacity:0}
+to{transform:scale(1);opacity:1}
+}
+
+/* FLOATING HEARTS */
+.heart{
+position:absolute;
+font-size:20px;
+color:#ff4fa3;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);opacity:0}
+100%{transform:translateY(-10vh);opacity:1}
+}
+
+/* FINAL SURPRISE */
+#final{
+position:absolute;
+width:100%;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(135deg,#000000,#1a0033);
+display:none;
+padding:20px;
+}
+
+.bigHeart{
+font-size:90px;
+cursor:pointer;
+animation:pulse 1s infinite;
+margin-top:20px;
+}
+
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.2)}
+100%{transform:scale(1)}
+}
+
+.message{
+display:none;
+margin-top:20px;
+animation:fadeUp 1.5s ease forwards;
+}
+
+</style>
+</head>
+<body>
+
+<!-- 8 ANIMATED SLIDES -->
+<div class="slide active" id="slide1">
+<h1>Happy Birthday Mummy ❤️</h1>
+<p>Today is the most special day because it's the birthday of the most special person in my life.</p>
+</div>
+
+<div class="slide" id="slide2">
+<h1>You are my world</h1>
+<p>You are not just my mother, you are my best friend, my support and my biggest strength.</p>
+</div>
+
+<div class="slide" id="slide3">
+<h1>Thank You Mummy</h1>
+<p>Thank you for always understanding me even when I say nothing.</p>
+</div>
+
+<div class="slide" id="slide4">
+<h1>Your Love</h1>
+<p>Your love is the most pure love in this world and I feel lucky every day because of you.</p>
+</div>
+
+<div class="slide" id="slide5">
+<h1>My Inspiration</h1>
+<p>You inspire me to become a better person every single day.</p>
+</div>
+
+<div class="slide" id="slide6">
+<h1>My Safe Place</h1>
+<p>No matter what happens, I always feel safe when you are with me.</p>
+</div>
+
+<div class="slide" id="slide7">
+<h1>Love You Forever</h1>
+<p>I may not say it every day, but I love you more than anything in this world.</p>
+</div>
+
+<div class="slide" id="slide8">
+<h1>Tap for Birthday Surprise 🎁</h1>
+<p>Something cute is waiting for you...</p>
+<img src="657759187_1518918366518094_986319519998857983_n.jpg">
+</div>
+
+<!-- FINAL SURPRISE SCREEN -->
+<div id="final">
+<h1>Happy Birthday Mummy ❤️</h1>
+<p>You are the best mother in the whole world. Thank you for everything you do for me. I love you so much 💖</p>
+
+<div class="bigHeart" onclick="tapHeart()">❤️</div>
+
+<div class="message" id="msg">
+<h1>Forever Your Child ❤️</h1>
+<p>I promise I will always make you proud. Love you mummy 💕</p>
+</div>
+</div>
+
+<script>
+let current=1;
+
+function nextSlide(){
+document.getElementById("slide"+current).classList.remove("active");
+current++;
+
+if(current<=8){
+document.getElementById("slide"+current).classList.add("active");
+}else{
+document.getElementById("final").style.display="flex";
+}
+}
+
+setInterval(nextSlide,3200);
+
+let tap=0;
+function tapHeart(){
+tap++;
+if(tap==3){
+document.getElementById("msg").style.display="block";
+}
+}
+
+// floating hearts animation
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},500);
+</script>
+
+</body>
+</html>
